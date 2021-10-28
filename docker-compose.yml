@@ -1,0 +1,36 @@
+version: '3'
+
+services: 
+    erasmus-system-backend:
+        build: ../inz-backend/erasmus-system-backend
+        image: erasmus-system-backend-img
+        container_name: backend
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/erasmus-system-db
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=postgres
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        ports: 
+            - "8080:8080"
+        depends_on: 
+            - erasmus-system-db
+    erasmus-system-frontend:
+        build: ../inz-frontend/erasmus-system-frontend
+        image: erasmus-system-frontend-img
+        container_name: frontend
+        ports: 
+            - 3000:3000
+    erasmus-system-db:
+        image: postgres
+        container_name: postgres
+        volumes: 
+            - db-data:/var/lib/postgresql/data
+        environment: 
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=erasmus-system-db
+        ports:
+            - 5432:5432
+
+volumes: 
+    db-data:
