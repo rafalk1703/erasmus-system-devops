@@ -2,7 +2,7 @@ version: '3'
 
 services: 
     erasmus-system-backend:
-        build: ../inz-backend/erasmus-system-backend
+        build: ../erasmus-system-backend
         image: erasmus-system-backend-img
         container_name: backend
         environment:
@@ -15,7 +15,7 @@ services:
         depends_on: 
             - erasmus-system-db
     erasmus-system-frontend:
-        build: ../inz-frontend/erasmus-system-frontend
+        build: ../erasmus-system-frontend
         image: erasmus-system-frontend-img
         container_name: frontend
         ports: 
