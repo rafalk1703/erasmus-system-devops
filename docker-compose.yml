@@ -6,7 +6,7 @@ services:
         image: erasmus-system-backend-img
         container_name: backend
         environment:
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/erasmus-system-db
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://erasmus-system-db:5432/erasmus-system-db
             - SPRING_DATASOURCE_USERNAME=postgres
             - SPRING_DATASOURCE_PASSWORD=postgres
             - SPRING_JPA_HIBERNATE_DDL_AUTO=update
